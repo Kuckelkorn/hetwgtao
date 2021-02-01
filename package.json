@@ -1,0 +1,19 @@
+{
+  "name": "hetwgtao",
+  "version": "0.0.1",
+  "description": "Community site packages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kuckelkorn/hetwgtao.git"
+  },
+  "author": "R. Kuckelkorn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kuckelkorn/hetwgtao/issues"
+  },
+  "homepage": "https://github.com/Kuckelkorn/hetwgtao#readme"
+}
