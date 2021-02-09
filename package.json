@@ -2,11 +2,11 @@
   "name": "hetwgtao",
   "version": "0.0.1",
   "description": "Community site packages",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "ndmStart": "nodemon app.js"
+    "start": "node server/server.js",
+    "ndmStart": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
