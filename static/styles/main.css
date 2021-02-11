@@ -1,142 +1,132 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background-color: #2E2C29;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 3fr 1fr;
-      grid-template-columns: 1fr 3fr 1fr;
 }
 
-header {
-  -ms-grid-column: 2;
-      grid-column-start: 2;
-}
-
-header figure {
-  display: none;
-}
-
-header p {
-  font-size: 1.5em;
-  color: white;
-}
-
-header nav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding: 0;
-}
-
-header nav ul li {
-  list-style: none;
-}
-
-header nav ul li a {
-  font-size: 1em;
-  color: white;
+a {
   text-decoration: none;
-  padding: 1rem;
+  color: black;
 }
 
-header nav ul li:first-of-type a {
-  padding-left: 0;
+body {
+  font-family: "Poppins", sans-serif;
 }
 
-header nav ul li:last-of-type {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-
-header nav ul li:last-of-type a {
-  background-color: blue;
-  border-radius: 20px;
-}
-
-main {
-  -ms-grid-column: 2;
-      grid-column-start: 2;
-  width: 100%;
-}
-
-main h1 {
+h1 {
+  font-weight: 700;
+  font-size: 2rem;
   color: white;
 }
 
-main .card {
-  margin-bottom: 1rem;
+h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: black;
+}
+
+p {
+  font-weight: 400;
+  color: black;
+}
+
+a {
+  font-weight: 300;
+  color: white;
+}
+
+.card {
   border-radius: 25px;
-  padding: .5rem 1rem;
+  padding: 1rem 0.5rem;
   position: relative;
-}
-
-main .birthday {
   background-color: #D4AF37;
+  box-shadow: 2px 2px 3px 2px #222;
 }
 
-main .melding {
+.melding {
   background-color: white;
 }
-
-main .melding h2 {
+.melding h2 {
   color: #D4AF37;
 }
 
-main .melding p {
-  color: black;
-}
-
-main .melding a {
-  text-decoration: none;
-}
-
-main ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  padding: 0;
-}
-
-main ul .lid {
-  background-color: #D4AF37;
-  list-style: none;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  margin-right: 1.5rem;
-  border-radius: 25px;
-  width: 33%;
-  position: relative;
-}
-
-main ul .lid a {
-  text-decoration: none;
-}
-
-main ul .lid h2 {
-  color: black;
-  font-size: 1em;
-}
-
-main ul .lid p {
-  color: black;
-}
-
-main ul .lid .jaar {
+.lid .jaar {
   position: absolute;
   right: 15px;
   bottom: -10px;
 }
+
+body {
+  background-color: #2E2C29;
+  padding: 1rem;
+}
+
+@media (min-width: 45rem) {
+  body {
+    display: grid;
+    grid-template-columns: auto 40rem auto;
+  }
+  body main {
+    grid-column-start: 2;
+  }
+}
+@media (min-width: 60rem) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+}
+@media (min-width: 75rem) {
+  body {
+    display: grid;
+    grid-template-columns: auto 65rem auto;
+  }
+}
+ul {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 0;
+}
+ul li {
+  list-style: none;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+header {
+  grid-column-start: 2;
+  display: flex;
+  flex-wrap: wrap;
+}
+header img {
+  width: 50px;
+}
+
+nav {
+  flex-grow: 2;
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+#member {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  background: white;
+  padding: 1rem;
+  border-radius: 25px;
+}
+
 /*# sourceMappingURL=main.css.map */

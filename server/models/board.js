@@ -8,6 +8,10 @@ const boardSchema = mongoose.Schema({
     function:{
         type: String,
         required: true
+    },
+    reunionistBoard:{
+        type: Array,
+        required: true
     }
 })
 

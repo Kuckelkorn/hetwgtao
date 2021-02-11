@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const members = require('./controllers/members.js');
+const mentions = require('./controllers/mentions.js');
 
 
 // Initialize Application
@@ -11,7 +13,9 @@ app
     .use('/static', express.static('./static'))
     .set('view engine', 'pug')
     .set('views', './server/views')
-    .get('/', (req, res) =>{res.render('index')});
+    .get('/', (req, res) =>{res.render('index')})
+    .use('/leden', members)
+    .use('/mededelingen', mentions);
 
 // Starting Server
 app.listen(5555, ()=> {
