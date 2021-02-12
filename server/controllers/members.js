@@ -23,7 +23,7 @@ async function showMembers (req, res, next) {
 function findMembers () {
 	return new Promise(async (resolve, reject) => {
 			try {
-				let data = await Member.find().collation().sort({year:decending}).sort({lastname:1})
+				let data = await Member.find().sort({year:ascending}).sort({lastname:1})
                 console.log(data)
 				resolve(data)
 			} catch (err) {
