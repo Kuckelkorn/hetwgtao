@@ -17,10 +17,10 @@ const memberSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    status:{
-        type: String,
-        required: true
-    },
+    // status:{
+    //     type: String,
+    //     required: true
+    // },
     year:{
         type: Number,
         required: true
@@ -37,6 +37,10 @@ const memberSchema = mongoose.Schema({
     },
     postalcode:{
         type: String
+    },
+    password:{
+        type: String,
+        required: true
     }
 })
 

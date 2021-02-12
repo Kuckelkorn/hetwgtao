@@ -124,9 +124,16 @@ nav {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+}
+#member fieldset {
   background: white;
-  padding: 1rem;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  border-style: none;
   border-radius: 25px;
+  padding: 1rem;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,65 +1,15 @@
 extends layouts/head.pug
 
 block title
-    title o.v. Het w.g. Tao
+    title Ledenlijst
 
-block body
-    header
-        img(src="../static/assets/tao1.svg", alt="logo")
-        p#titel o.v. Het w.g. Tao 
-        nav 
-            ul 
-                li 
-                    a(href="#") Mededelingen
-                li 
-                    a(href="#") Ledenlijst
-                li 
-                    a(href="#") Jaarkalender
-                li 
-                    a(href="#") Varia
-                li 
-                    a(href="#") Commissies
-            a(href="#") Mijn Profiel
+block main
     main 
         h1 Ledenlijst 
-        ul 
-            li.lid.card 
-                a(href="#")
-                    h2.naam Teun Hanzen 
-                    p.status Actief 
-                    p.jaar 2017 
-            li.lid.card 
-                a(href="#")
-                    h2.naam Remco Kuckelkorn
-                    p.status Actief 
-                    p.jaar 2017 
-            li.lid.card  
-                a(href="#")
-                    h2.naam Badr Mohamed
-                    p.status Actief 
-                    p.jaar 2017 
-            li.lid.card  
-                a(href="#")
-                    h2.naam Max Schute 
-                    p.status Actief 
-                    p.jaar 2017 
-            li.lid.card  
-                a(href="#")
-                    h2.naam Teun Hanzen 
-                    p.status Actief 
-                    p.jaar 2017 
-            li.lid.card 
-                a(href="#")
-                    h2.naam Remco Kuckelkorn
-                    p.status Actief 
-                    p.jaar 2017 
-            li.lid.card 
-                a(href="#")
-                    h2.naam Badr Mohamed
-                    p.status Actief 
-                    p.jaar 2017 
-            li.lid.card 
-                a(href="#")
-                    h2.naam Max Schute 
-                    p.status Actief 
-                    p.jaar 2017 
+        a(href="/leden/toevoegen") + leden toevoegen
+        ul
+            each member, i in members 
+                li.card.lid
+                    h2.naam= member.firstname +' ' + member.lastname
+                    p.status Actief
+                    p.jaar= member.year

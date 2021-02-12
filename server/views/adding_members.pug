@@ -1,44 +1,32 @@
 extends layouts/head.pug
 
 block title
-    title o.v. Het w.g. Tao
+    title Lid toevoegen
 
-block body
-    header
-        img(src="../static/assets/tao1.svg", alt="logo")
-        p#titel o.v. Het w.g. Tao 
-        nav 
-            ul 
-                li 
-                    a(href="#") Mededelingen
-                li 
-                    a(href="#") Ledenlijst
-                li 
-                    a(href="#") Jaarkalender
-                li 
-                    a(href="#") Varia
-                li 
-                    a(href="#") Commissies
-            a(href="#") Mijn Profiel
+block main
     main 
         h1 Leden toevoegen 
-        form#member(action="/add_member" method="POST")
-            label Voornaam
-            input(name="firstname", type="text" )
-            label Achternaam
-            input(name="lastname", type="text" )
-            label E-mail
-            input(name="email", type="email" )
-            label Nummer
-            input(name="phonenumber", type="number" )
-            label Actief of reunist
-            label(for="actief") Actief
-            input(name="status", id="actief" , type="radio")
-            label(for="reunist") Reunist
-            input(name="status", id="reunist" , type="radio" )
-            label Jaar 
-            input(name="year", type="number" )
-            label Verjaardag
-            input(name="birthday", type="date" )
-
+        form#member(method="POST" action="/leden/add_member")
+            fieldset Algemeen
+                label Voornaam
+                input(name="firstname", type="text" )
+                label Achternaam
+                input(name="lastname", type="text" )
+                label E-mail
+                input(name="email", type="email" )
+                label Mobiel
+                input(name="phonenumber", type="number" )
+                label Verjaardag
+                input(name="birthday", type="date" )
+            fieldset Lidmaatschap
+                label Actief of reunist
+                label(for="actief") Actief
+                input(name="status", id="actief" , type="radio")
+                label(for="reunist") Reunist
+                input(name="status", id="reunist" , type="radio" )
+                label Jaar 
+                input(name="year", type="number" )
+            fieldset Wachtwoord 
+                label Voer een wachtwoord in
+                input(name="password", type="password")
         button(type="submit" form="member" value="Submit") Opslaan 
