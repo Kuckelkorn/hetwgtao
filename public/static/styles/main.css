@@ -39,6 +39,10 @@ p {
   color: black;
 }
 
+p.status {
+  text-transform: capitalize;
+}
+
 a {
   font-weight: 300;
   color: white;
@@ -130,10 +134,24 @@ nav {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+  justify-content: flex-start;
   margin-bottom: 1rem;
   border-style: none;
   border-radius: 25px;
   padding: 1rem;
+}
+
+#wijzigen {
+  cursor: pointer;
+}
+#wijzigen ul {
+  display: none;
+}
+#wijzigen .show {
+  display: block;
+}
+#wijzigen .hide {
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */

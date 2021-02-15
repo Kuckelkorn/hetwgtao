@@ -15,15 +15,14 @@ block main
                 label E-mail
                 input(name="email", type="email" )
                 label Mobiel
-                input(name="phonenumber", type="number" )
+                input(name="phonenumber", type="tel" )
                 label Verjaardag
-                input(name="birthday", type="date" )
+                input(name="birthday", type="date")
             fieldset Lidmaatschap
                 label Actief of reunist
-                label(for="actief") Actief
-                input(name="status", id="actief" , type="radio")
-                label(for="reunist") Reunist
-                input(name="status", id="reunist" , type="radio" )
+                select(name="status")
+                    option(value="Actief") Actief
+                    option(value="Reunist") Reunist   
                 label Jaar 
                 input(name="year", type="number" )
             fieldset Wachtwoord 

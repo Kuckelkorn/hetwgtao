@@ -14,7 +14,6 @@ router
 
 async function showMembers (req, res, next) {
     let members = await findMembers();
-    console.log(members);
     res.render(('memberlist'), {
         members
     });
@@ -24,7 +23,6 @@ function findMembers () {
 	return new Promise(async (resolve, reject) => {
 			try {
 				let data = await Member.find().sort({year:ascending}).sort({lastname:1})
-                console.log(data)
 				resolve(data)
 			} catch (err) {
 				reject(console.log(err))
@@ -41,6 +39,7 @@ async function addMember (req, res) {
     member.email= req.body.email;
     member.phonenumber= req.body.phonenumber;
     member.birthday= req.body.birthday;
+    member.status=req.body.status;
     member.year= req.body.year;
     member.password= password;
     member.save((err) =>{

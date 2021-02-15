@@ -1,18 +1,34 @@
 const mongoose = require('mongoose');
+const Member = require('./member.js');
 
 const boardSchema = mongoose.Schema({
-    member:{
-        type: String,
-        required: true
-    },
-    function:{
-        type: String,
-        required: true
-    },
+    praetor:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Member'
+    }],
+    propraetor:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Member'
+    }],
+    curator:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Member'
+    }],
+    quaestor:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Member'
+    }]
+})
+
+const rBoardSchema = mongoose.Schema({
     reunionistBoard:{
         type: Array,
         required: true
     }
 })
 
-const Board = module.exports = mongoose.model('Board', boardSchema)
+module.exports = {
+    Board :mongoose.model('Board', boardSchema),
+    rBoard: mongoose.model('rBoard', rBoardSchema)
+}
+

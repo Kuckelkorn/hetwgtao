@@ -1,0 +1,31 @@
+extends layouts/head.pug
+
+block title 
+    title Bestuur toevoegen
+
+block main 
+    main 
+        h1 Nieuw bestuur toevoegen
+        form#board(method="POST" action="/bestuur/add_board")
+            label Praetor
+            input(type="text", name="praetor", placeholder="Zoeken.." list="leden")
+            datalist#leden 
+                each member, i in actief 
+                    option(value= member.firstname + ' ' + member.lastname)
+            label pro-Praetor
+            input(type="text", name="propraetor", placeholder="Zoeken.." list="leden")
+            label Curator Actorum
+            input(type="text", name="curator", placeholder="Zoeken.." list="leden")
+            label Quaestor
+            input(type="text", name="quaestor", placeholder="Zoeken.." list="leden")
+            button(type="submit" form="board" value="Submit") Bestuur wijzigen
+        form#rBoard(method="POST" action="/bestuur/change_RBoard")
+            label Reunistenbestuur
+            input(type="text", placeholder="Zoeken.." list="reunisten")
+            datalist#reunisten 
+                each member, i in reunisten  
+                    option(value= member.firstname + ' ' + member.lastname)
+            input(type="text", placeholder="Zoeken.." list="reunisten")
+            input(type="text", placeholder="Zoeken.." list="reunisten")
+            input(type="text", placeholder="Zoeken.." list="reunisten")
+            button(type="submit" form="rBoard" value="Submit") Reunistenbestuur wijzigen
