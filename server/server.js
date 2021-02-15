@@ -31,7 +31,8 @@ app
     .get('/', (req, res) =>{res.render('index')})
     .use('/leden', members)
     .use('/mededelingen', mentions)
-    .use('/bestuur', board);
+    .use('/bestuur', board)
+    .use((req, res, next) => { res.status(404).render('404')});
 
 // Starting Server
 app.listen(5555, ()=> {
