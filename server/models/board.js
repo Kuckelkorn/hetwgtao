@@ -20,15 +20,8 @@ const boardSchema = mongoose.Schema({
     }]
 })
 
-const rBoardSchema = mongoose.Schema({
-    reunionistBoard:{
-        type: Array,
-        required: true
-    }
-})
 
 module.exports = {
-    Board :mongoose.model('Board', boardSchema),
-    rBoard: mongoose.model('rBoard', rBoardSchema)
+    Board :mongoose.model('Board', boardSchema)
 }
 

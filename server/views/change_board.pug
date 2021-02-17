@@ -21,11 +21,11 @@ block main
             button(type="submit" form="board" value="Submit") Bestuur wijzigen
         form#rBoard(method="POST" action="/bestuur/change_RBoard")
             label Reunistenbestuur
-            input(type="text", placeholder="Zoeken.." list="reunisten")
+            input(type="text", placeholder="Zoeken.." list="reunisten" name="r1")
             datalist#reunisten 
                 each member, i in reunisten  
                     option(value= member.firstname + ' ' + member.lastname)
-            input(type="text", placeholder="Zoeken.." list="reunisten")
-            input(type="text", placeholder="Zoeken.." list="reunisten")
-            input(type="text", placeholder="Zoeken.." list="reunisten")
+            input(type="text", placeholder="Zoeken.." list="reunisten" name="r2")
+            input(type="text", placeholder="Zoeken.." list="reunisten" name="r3")
+            input(type="text", placeholder="Zoeken.." list="reunisten" name="r4")
             button(type="submit" form="rBoard" value="Submit") Reunistenbestuur wijzigen
