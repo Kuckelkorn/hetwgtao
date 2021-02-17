@@ -5,6 +5,9 @@ const memberSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	particle:{
+		type: String
+	},
 	lastname:{
 		type: String,
 		required: true
@@ -19,6 +22,10 @@ const memberSchema = mongoose.Schema({
 		required: true,
 		unique: true
 	},
+	password:{
+		type: String,
+		required: true
+	},
 	status:{
 		type: String,
 		required: true
@@ -31,6 +38,9 @@ const memberSchema = mongoose.Schema({
 		type: Date,
 		required: true
 	},
+	deathday:{
+		type: Date
+	},
 	street:{
 		type: String
 	},
@@ -40,9 +50,11 @@ const memberSchema = mongoose.Schema({
 	postalcode:{
 		type: String
 	},
-	password:{
-		type: String,
-		required: true
+	study:{ 
+		type: String
+	},
+	saldo:{
+		type: Number
 	}
 })
 

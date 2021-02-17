@@ -1,0 +1,31 @@
+extends layouts/head.pug
+
+block title 
+    title Profiel 
+
+block main 
+    main
+        if user.id == member.id
+            a(href="/lid/"+member.lastname.toLowerCase()+'&'+member.firstname.toLowerCase()+'/wijzigen') Profiel wijzigen
+        h1 Profiel van #{member.firstname} #{member.lastname}
+        section
+            h2 Contact gegevens
+            address
+                h3 E-mail: 
+                a(href="mailto:") #{member.email}
+                h3 Telefoon:
+                a(href="tel:") 0#{member.phonenumber}
+                h3 Adres:
+                p Alexanderkade 48
+                p 1018 ZC Amsterdam
+        section
+            h2 Biografie 
+            h3 Verjaardag
+            p= member.birthday
+            h3 Studie 
+            p Communication and Multimedia Design 
+            h3 Lid sinds
+            p #{member.year} status: #{member.status}
+        section 
+            h2 Saldo 
+            p &euro; 417

@@ -34,8 +34,9 @@ async function addMember (req, res) {
 	const member = new Member();
 	const salt = await bcrypt.genSaltSync();
 	const password = await bcrypt.hash(req.body.password, salt);
-	member.firstname= req.body.firstname;
-	member.lastname= req.body.lastname;
+	member.firstname= capitalizeFirstLetter(req.body.firstname);
+	member.particle=req.body.particle;
+	member.lastname= capitalizeFirstLetter(req.body.lastname);
 	member.email= req.body.email;
 	member.phonenumber= req.body.phonenumber;
 	member.birthday= req.body.birthday;
@@ -51,6 +52,10 @@ async function addMember (req, res) {
 		}
 	})
 	return;
+}
+
+function capitalizeFirstLetter(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 module.exports = router
