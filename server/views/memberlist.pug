@@ -8,8 +8,9 @@ block main
         h1 Ledenlijst 
         a(href="/leden/toevoegen") + leden toevoegen
         ul
-            each member, i in members 
-                li.card.lid
-                    h2.naam= member.firstname +' ' + member.lastname
-                    p.status= member.status
-                    p.jaar= member.year
+            each member, i in members
+                    li.card.lid
+                        a(href="/lid/"+member.lastname.toLowerCase()+'&'+member.firstname.toLowerCase())
+                            h2.naam= member.firstname +' ' + member.lastname
+                            p.status= member.status
+                            p.jaar= member.year
