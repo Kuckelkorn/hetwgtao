@@ -1,0 +1,14 @@
+extends layouts/head.pug
+
+block title 
+    title Het bestuur
+
+block profile
+    a(href="/lid/"+user.lastname.toLowerCase()+'&'+user.firstname.toLowerCase()) Mijn Profiel 
+
+block main 
+    main 
+        if bestuur === true
+            a(href="/bestuur/wijzigen") Wijzig bestuur
+        else
+            p geen bestuur

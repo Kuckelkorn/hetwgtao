@@ -2,7 +2,9 @@ extends layouts/head.pug
 
 block title 
     title Bestuur toevoegen
-
+block profile
+    a(href="/lid/"+user.lastname.toLowerCase()+'&'+user.firstname.toLowerCase()) Mijn Profiel
+    
 block main 
     main 
         h1 Nieuw bestuur toevoegen
@@ -18,7 +20,7 @@ block main
             input(type="text", name="curator", placeholder="Zoeken.." list="leden")
             label Quaestor
             input(type="text", name="quaestor", placeholder="Zoeken.." list="leden")
-            button(type="submit" form="board" value="Submit") Bestuur wijzigen
+        button(type="submit" form="board" value="Submit") Bestuur wijzigen
         form#rBoard(method="POST" action="/bestuur/change_RBoard")
             label Reunistenbestuur
             input(type="text", placeholder="Zoeken.." list="reunisten" name="r1")
@@ -28,4 +30,4 @@ block main
             input(type="text", placeholder="Zoeken.." list="reunisten" name="r2")
             input(type="text", placeholder="Zoeken.." list="reunisten" name="r3")
             input(type="text", placeholder="Zoeken.." list="reunisten" name="r4")
-            button(type="submit" form="rBoard" value="Submit") Reunistenbestuur wijzigen
+        button(type="submit" form="rBoard" value="Submit") Reunistenbestuur wijzigen

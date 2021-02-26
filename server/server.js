@@ -9,6 +9,7 @@ const mentions = require('./controllers/mentions.js');
 const board = require('./controllers/board.js');
 const passport = require('passport');
 require('./Utilities/passportUtil.js')(passport);
+const boardUtil = require('./Utilities/boardUtil.js');
 
 
 // Declare Application
@@ -43,15 +44,15 @@ app.use('/static', express.static('./public/static'))
 
 //Routes
 app
-	.get('*', saveLocal)	
+	.use('*', saveLocal)		
 	.get('/', (req, res) => {res.render('index')})
 	.get('/login', (req, res) => {res.render('login')})
 	.get('/logout', logout)
 	.post('/login', login)
-	.use('/leden', loggedIn, members)
-	.use('/lid', loggedIn, profile)
-	.use('/mededelingen', loggedIn, mentions)
-	.use('/bestuur', loggedIn, board)
+	.use('/leden', loggedIn, saveBoard, members)
+	.use('/lid', loggedIn, saveBoard, profile)
+	.use('/mededelingen', loggedIn, saveBoard, mentions)
+	.use('/bestuur', loggedIn, saveBoard, board)
 	.use((req, res) => { res.status(404).render('404')});
 	
 
@@ -68,7 +69,8 @@ function login (req, res, next) {
 }
 
 function logout(req, res ){
-	req.logout(); 
+	req.logout();
+	req.session.destroy(); 
 	res.redirect('/');
 }
 
@@ -82,5 +84,21 @@ function loggedIn (req, res, next){
 		return next();
 	} else {
 		res.redirect('/login');
+	}
+}
+
+async function saveBoard(req, res, next){
+	let latestBoard = await boardUtil.findBoard();
+	if (res.locals.user.id === latestBoard.praetor[0].id || 
+		res.locals.user.id === latestBoard.curator[0].id ||
+		res.locals.user.id === latestBoard.quaestor[0].id) {
+		res.locals.bestuur = true;
+		next()
+	} else if (latestBoard.propraetor.length > 0  && res.locals.user.id === latestBoard.propraetor[0].id ){
+		res.locals.bestuur = true
+		next()
+	} else {
+		res.locals.bestuur = false
+		next()
 	}
 }

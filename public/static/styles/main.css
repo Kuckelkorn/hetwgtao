@@ -1,157 +1,122 @@
-html {
+* {
   box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  padding: 0;
-  margin: 0;
+  background-color: #2e2c29;
 }
-
-a {
-  text-decoration: none;
-  color: black;
+body main {
+  width: 90vw;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+body main h1 {
+  margin-bottom: 1.5rem;
 }
 
 body {
   font-family: "Poppins", sans-serif;
+  color: #d4d2cf;
 }
 
 h1 {
   font-weight: 700;
-  font-size: 2rem;
-  color: white;
 }
 
 h2 {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: black;
+  font-weight: 600;
 }
 
 p {
   font-weight: 400;
-  color: black;
-}
-
-p.status {
-  text-transform: capitalize;
-}
-
-a {
-  font-weight: 300;
-  color: white;
-}
-
-.card {
-  border-radius: 25px;
-  padding: 1rem 0.5rem;
-  position: relative;
-  background-color: #D4AF37;
-  box-shadow: 2px 2px 3px 2px #222;
-}
-
-.melding {
-  background-color: white;
-}
-.melding h2 {
-  color: #D4AF37;
-}
-
-.lid .jaar {
-  position: absolute;
-  right: 15px;
-  bottom: -10px;
-}
-
-body {
-  background-color: #2E2C29;
-  padding: 1rem;
-}
-
-@media (min-width: 45rem) {
-  body {
-    display: grid;
-    grid-template-columns: auto 40rem auto;
-  }
-  body main {
-    grid-column-start: 2;
-  }
-}
-@media (min-width: 60rem) {
-  body {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-  }
-}
-@media (min-width: 75rem) {
-  body {
-    display: grid;
-    grid-template-columns: auto 65rem auto;
-  }
-}
-ul {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  padding: 0;
-}
-ul li {
-  list-style: none;
-  width: 100%;
-  margin-bottom: 1rem;
 }
 
 header {
-  grid-column-start: 2;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  margin: 0.5rem auto;
+  width: 90vw;
 }
 header img {
-  width: 50px;
+  height: 4rem;
+  width: auto;
+  fill: white;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+a {
+  font-weight: 200;
+  text-decoration: none;
+  color: white;
+}
+
+.lid {
+  width: 100%;
+  background-color: #d4af37;
+  margin-bottom: 1.5rem;
+  border-radius: 25px;
+  color: black;
+  padding: 1.5rem;
 }
 
 nav {
-  flex-grow: 2;
   width: 100%;
+  margin: 2rem 0;
   display: flex;
-  align-items: baseline;
   justify-content: space-between;
+  font-size: 0.75rem;
+}
+nav ul li {
+  margin-left: 1rem;
+}
+nav ul li:first-of-type {
+  margin-left: 0;
+}
+nav a {
+  justify-self: flex-end;
 }
 
-#member {
+form {
   display: flex;
-  flex-wrap: nowrap;
   flex-direction: column;
+  width: 100%;
 }
-#member fieldset {
-  background: white;
+form fieldset {
+  font-size: 1rem;
   display: flex;
-  flex-wrap: nowrap;
   flex-direction: column;
-  justify-content: flex-start;
   margin-bottom: 1rem;
   border-style: none;
-  border-radius: 25px;
+  background-color: #8c867e;
   padding: 1rem;
+  border-radius: 25px;
+}
+form label {
+  font-size: 0.85rem;
+}
+form input {
+  padding: 0.2rem;
 }
 
-#wijzigen {
-  cursor: pointer;
-}
-#wijzigen ul {
-  display: none;
-}
-#wijzigen .show {
-  display: block;
-}
-#wijzigen .hide {
-  display: none;
+button {
+  font-size: 1.1rem;
+  background-color: #d4af37;
+  padding: 0.5rem;
+  border-radius: 25px;
+  border-style: none;
+  justify-self: flex-end;
+  float: right;
+  margin-top: 1rem;
 }
 
 /*# sourceMappingURL=main.css.map */

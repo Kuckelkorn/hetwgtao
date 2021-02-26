@@ -6,9 +6,9 @@ block title
 
 block main
     main 
-        form(method="POST", action="/login")
+        form#login(method="POST", action="/login")
             label E-mail 
             input(type="email" name="email")
             label Password 
             input(type="password" name="password")
-            button(type="submit" value="submit") Inloggen 
+        button(type="submit" value="submit" form="login") Inloggen 

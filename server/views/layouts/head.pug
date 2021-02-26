@@ -10,23 +10,29 @@ head
 body 
     header
         img(src="../static/assets/tao1.svg", alt="logo")
-        p#titel o.v. Het w.g. Tao 
-        nav 
-            ul 
-                li 
-                    a(href="#") Mededelingen
-                li 
-                    a(href="/leden") Ledenlijst
-                li 
-                    a(href="#") Jaarkalender
-                li 
-                    a(href="#") Varia
-                li 
-                    a(href="#") Commissies
-            a(href="#") Mijn Profiel
+        p.titel o.v. Het w.g. Tao
         if user
             a(href="/logout") Uitloggen
+            nav 
+                ul 
+                    li 
+                        a(href="/mededelingen") Mededelingen
+                    li 
+                        a(href="/leden") Ledenlijst
+                    li 
+                        a(href="/jaarkalender") Jaarkalender
+                    li 
+                        a(href="/varia") Varia
+                    li 
+                        a(href="/commissies") Commissies
+                    li
+                        a(href="/bestuur") Bestuur
+                    if bestuur === true 
+                        li 
+                            a(href="/bestuur/acties") Bestuurshandelingen
+                block profile
         else
-            a(href="/login") Inloggen
+            a(href="/login") Inloggen 
+
         
     block main

@@ -5,7 +5,11 @@ const Member = require('../models/member.js');
 
 router
 	.get('/:lastname&:firstname', showProfile)
-	.get('/:lastname&:firstname/wijzigen', changeProfile);
+	.get('/:lastname&:firstname/wijzigen', changeProfile)
+	.post('/:lastname&:firstname/change_email', changeEmail)
+	.post('/:lastname&:firstname/change_number', changeNumber)
+	.post('/:lastname&:firstname/change_study', changeStudy)
+	.post('/:lastname&:firstname/change_address', changeAddress);
 
 
 async function showProfile (req, res){
@@ -30,15 +34,90 @@ function findProfile(fname, lname){
 }
 async function changeProfile (req, res) {
 	let member = await findProfile (req.params.firstname, req.params.lastname)
-	// console.log(member);
-	// console.log(res.locals.user);
 	if (member.id === res.locals.user.id){
-		res.render('change_profile');
+		res.render('change_profile', {
+			member
+		});
 	} else {
 		res.redirect('/')
 	}
 }
 
+async function changeEmail (req, res) {
+	let member = await findProfile (req.params.firstname, req.params.lastname);
+	let data = {}
+	data.email= req.body.email;
+	let query = {
+		firstname: capitalizeFirstLetter(req.params.firstname),
+		lastname:capitalizeFirstLetter(req.params.lastname)
+	}
+	Member.updateOne(query, data, (err) => {
+		if (err) {
+			console.log(err);
+			return;
+		} else {
+			res.redirect('/lid/'+member.lastname+'&'+member.firstname+'/wijzigen')
+		}
+	})
+	return;
+}
+async function changeNumber (req, res) {
+	let member = await findProfile (req.params.firstname, req.params.lastname);
+	let data = {}
+	data.phonenumber= req.body.phonenumber;
+	let query = {
+		firstname: capitalizeFirstLetter(req.params.firstname),
+		lastname:capitalizeFirstLetter(req.params.lastname)
+	}
+	Member.updateOne(query, data, (err) => {
+		if (err) {
+			console.log(err);
+			return;
+		} else {
+			res.redirect('/lid/'+member.lastname+'&'+member.firstname+'/wijzigen')
+		}
+	})
+	return;
+}
+async function changeStudy (req, res) {
+	let member = await findProfile (req.params.firstname, req.params.lastname);
+	let data = {}
+	data.study= req.body.study;
+	let query = {
+		firstname: capitalizeFirstLetter(req.params.firstname),
+		lastname:capitalizeFirstLetter(req.params.lastname)
+	}
+	await Member.updateOne(query, data, (err) => {
+		if (err) {
+			console.log(err);
+			return;
+		} else {
+			res.redirect('/lid/'+member.lastname+'&'+member.firstname+'/wijzigen')
+		}
+	})
+	return;
+}
+
+async function changeAddress (req, res) {
+	let member = await findProfile (req.params.firstname, req.params.lastname);
+	let data = {}
+	data.street=req.body.street;
+	data.postalcode= req.body.postalcode;
+	data.place= req.body.place;
+	let query = {
+		firstname: capitalizeFirstLetter(req.params.firstname),
+		lastname:capitalizeFirstLetter(req.params.lastname)
+	}
+	Member.updateOne(query, data, (err) => {
+		if (err) {
+			console.log(err);
+			return;
+		} else {
+			res.redirect('/lid/'+member.lastname+'&'+member.firstname+'/wijzigen')
+		}
+	})
+	return;
+}
 
 function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);

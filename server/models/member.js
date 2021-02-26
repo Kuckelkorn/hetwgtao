@@ -19,7 +19,6 @@ const memberSchema = mongoose.Schema({
 	},
 	phonenumber:{
 		type: Number,
-		required: true,
 		unique: true
 	},
 	password:{
@@ -44,7 +43,7 @@ const memberSchema = mongoose.Schema({
 	street:{
 		type: String
 	},
-	housenumber:{
+	place:{
 		type: String
 	},
 	postalcode:{
