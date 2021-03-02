@@ -12,7 +12,7 @@ Dispuutswebsite voor het w.g. Tao.
 
 The repository can be cloned by running `git clone` in the command line.
 
-```
+```zsh
 git clone https://github.com/Kuckelkorn/hetwgtao
 ```
 
@@ -20,7 +20,7 @@ git clone https://github.com/Kuckelkorn/hetwgtao
 
 Install the dependencies with npm.
 
-```
+```node
 npm install
 ```
 
@@ -48,7 +48,7 @@ SESSION_SECRET= 'your string'
 
 Start the server with `npm run ndmStart`, you can view it by going to `localhost:5555`.
 
-```
+```node
 1. npm run ndmStart
 2. open your browser of choice and go to localhost:5000
 ```
