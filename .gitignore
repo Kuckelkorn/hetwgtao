@@ -3,7 +3,6 @@
 /node_modules/
 /data/
 .env
-/public/static/scss/
 notes.txt
 /server/controllers/tests.js
 /server/views/test.pug

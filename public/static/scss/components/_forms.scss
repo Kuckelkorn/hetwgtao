@@ -1,0 +1,24 @@
+@use '../abstracts/variables';
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  fieldset {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    border-style: none;
+    background-color: lighten(variables.$primary-color, 35);
+    padding: 1rem;
+    border-radius: 25px;
+  }
+  label {
+    font-size: 0.85rem;
+  }
+
+  input {
+    padding: 0.2rem;
+  }
+}
