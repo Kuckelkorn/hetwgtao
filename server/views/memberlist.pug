@@ -17,6 +17,6 @@ block main
             each member, i in members
                     li.card.lid
                         a(href="/lid/"+member.lastname.toLowerCase()+'&'+member.firstname.toLowerCase())
-                            h2.naam= member.firstname +' ' + member.lastname
+                            h2.naam= member.firstname +' ' + member.particle+ ' ' + member.lastname
                             p.status= member.status
                             p.jaar= member.year

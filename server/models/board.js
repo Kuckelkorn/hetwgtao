@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// const Member = require('./member.js');
 
 const boardSchema = mongoose.Schema({
 	praetor:[{

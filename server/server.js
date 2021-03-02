@@ -53,6 +53,8 @@ app
 	.use('/lid', loggedIn, saveBoard, profile)
 	.use('/mededelingen', loggedIn, saveBoard, mentions)
 	.use('/bestuur', loggedIn, saveBoard, board)
+	.get('/varia', (req, res) => {res.render('indev')})
+	.get('/kalender', (req, res) => {res.render('indev')})
 	.use((req, res) => { res.status(404).render('404')});
 	
 

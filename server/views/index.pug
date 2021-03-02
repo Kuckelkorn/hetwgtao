@@ -3,11 +3,9 @@ extends layouts/head_1.pug
 block title
     title o.v. Het w.g. Tao
 
-block portal
-    a(href="/mededelingen") Portal
 block main
-    section 
-        a(href="/login")
+    //- section 
+    //-     a(href="/login")
     main 
         form#login(method="POST", action="/login")
             label E-mail 
