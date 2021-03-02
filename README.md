@@ -30,8 +30,8 @@ In order to setup your database connection first you need to make a `.env` file
 in that file you paste the following code if you're using mongodb paste
 your info instead of the standard `<username>` , `<password>`, `<dbname>`
 
-```
-MONGO_DB= mongodb+srv://<username>:<password>@cluster0-ea6cu.azure.mongodb.net/<dbname>?retryWrites=true
+```sh
+MONGODB_URI= mongodb+srv://<username>:<password>@cluster0-ea6cu.azure.mongodb.net/<dbname>?retryWrites=true
 ```
 
 If you're using a different service look at their documentation about setting up the connection to your database and paste it behind `MONGO_DB=`
@@ -40,7 +40,7 @@ If you're using a different service look at their documentation about setting up
 
 In order to make sessions work you have to put in the .env file a string consisting of random characters to make it really hard for hackers to guess your secret and accesing your cookies and retrieve potentially sensitive information about your users
 
-```
+```sh
 SESSION_SECRET= 'your string'
 ```
 
