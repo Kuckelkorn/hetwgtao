@@ -3,21 +3,23 @@ const router = express.Router();
 const Board = require('../models/board.js');
 const Member = require('../models/member.js');
 const bcrypt = require('bcryptjs');
+const Committee = require('../models/committee.js');
 
 
 router
 	.get('/', showBoard)
-	.get('/wijzigen', isBoard, changeBoard)
+	.get('/wijzigen', isBoard, getMembers)
 	.get('/leden/toevoegen', isBoard, (req, res) => {res.render('adding_members')})
 	.post('/add_member',  addMember)
-	.post('/add_board',  addBoard);
+	.post('/add&chang_committee', changeCommittee)
+	.post('/add_board', changeBoard);
 
 
 async function showBoard (req, res ){
 	res.render('board')
 }
 
-async function changeBoard (req, res){
+async function getMembers (req, res){
 	let actief = await findMembers('Actief');
 	let reunisten = await findMembers('Reunist');
 	res.render('change_board', {actief, reunisten})
@@ -36,12 +38,24 @@ function findMembers (status) {
 	})
 }
 
-async function addBoard(req, res){
+async function changeBoard(req, res){
 	const board = new Board();
 	let praetorArr = req.body.praetor.split(" ");
 	let propraetorArr = req.body.propraetor.split(" ");
 	let curatorArr = req.body.curator.split(" ");
 	let quaestorArr = req.body.quaestor.split(" ");
+	let update = {
+		name: 'Bestuur',
+		praeses : await Member.find({firstname: praetorArr[0], lastname:praetorArr[1]}, '_id'),
+		vp: await Member.find({firstname: propraetorArr[0], lastname: propraetorArr[1]}, '_id'),
+		abactis: await Member.find({firstname: curatorArr[0], lastname:curatorArr[1]}, '_id'),
+		fiscus: await Member.find({firstname: quaestorArr[0], lastname:quaestorArr[1]}, '_id')
+	}
+	await Committee.findOneAndReplace({name: 'Bestuur'}, update, {
+		new: true,
+		upsert: true
+	})
+
 	board.praetor = await Member.find({firstname: praetorArr[0], lastname:praetorArr[1]}, '_id');
 	board.propraetor = await Member.find({firstname: propraetorArr[0], lastname: propraetorArr[1]}, '_id');
 	board.curator = await Member.find({firstname: curatorArr[0], lastname:curatorArr[1]}, '_id');
@@ -79,6 +93,25 @@ async function addMember (req, res) {
 		}
 	})
 	return;
+}
+
+async function changeCommittee (req, res){
+	let pArr = req.body.praetor.split(" ");
+	let vpArr = req.body.propraetor.split(" ");
+	let abArr = req.body.curator.split(" ");
+	let fArr = req.body.quaestor.split(" ");
+	let update = {
+		name: req.body.name,
+		praeses : await Member.find({firstname: pArr[0], lastname:pArr[1]}, '_id'),
+		vp: await Member.find({firstname: vpArr[0], lastname: vpArr[1]}, '_id'),
+		abactis: await Member.find({firstname: abArr[0], lastname:abArr[1]}, '_id'),
+		fiscus: await Member.find({firstname: fArr[0], lastname:fArr[1]}, '_id')
+	}
+	await Committee.findOneAndReplace({name: req.body.name}, update, {
+		new: true,
+		upsert: true
+	})
+	res.redirect('/commissies')
 }
 
 function capitalizeFirstLetter(string) {

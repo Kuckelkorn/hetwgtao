@@ -21,6 +21,10 @@ const committeeSchema = mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Member'
 	}],
+	nestor:[{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Member'
+	}],
 	lid: {
 		person :[{
 			type: mongoose.Schema.Types.ObjectId,
