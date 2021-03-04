@@ -11,6 +11,7 @@ const committees = require('./controllers/committees.js')
 const passport = require('passport');
 require('./Utilities/passportUtil.js')(passport);
 const boardUtil = require('./Utilities/boardUtil.js');
+let port = process.env.PORT || 5555
 
 
 // Declare Application
@@ -60,8 +61,8 @@ app
 	.use((req, res) => { res.status(404).render('404')});
 	
 // Starting Server
-app.listen(process.env.PORT, () => {
-	console.log('Server started at port ' + process.env.PORT);
+app.listen(port, () => {
+	console.log('Server started at port ' + port);
 });
 
 function login (req, res, next) {
