@@ -7,6 +7,7 @@ const members = require('./controllers/members.js');
 const profile = require('./controllers/profile.js');
 const mentions = require('./controllers/mentions.js');
 const board = require('./controllers/board.js');
+const committees = require('./controllers/committees.js')
 const passport = require('passport');
 require('./Utilities/passportUtil.js')(passport);
 const boardUtil = require('./Utilities/boardUtil.js');
@@ -53,14 +54,14 @@ app
 	.use('/lid', loggedIn, saveBoard, profile)
 	.use('/mededelingen', loggedIn, saveBoard, mentions)
 	.use('/bestuur', loggedIn, saveBoard, board)
+	.use('/commissies', committees)
 	.get('/varia', (req, res) => {res.render('indev')})
 	.get('/kalender', (req, res) => {res.render('indev')})
 	.use((req, res) => { res.status(404).render('404')});
 	
-
 // Starting Server
-app.listen(5555, () => {
-	console.log('Server started at port 5555');
+app.listen(process.env.PORT, () => {
+	console.log('Server started at port ' + process.env.PORT);
 });
 
 function login (req, res, next) {
