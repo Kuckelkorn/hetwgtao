@@ -68,7 +68,7 @@ a {
 
 .lid {
   width: 100%;
-  background-color: #d4af37;
+  background-color: #ddc370;
   margin-bottom: 1.5rem;
   border-radius: 25px;
   color: black;
@@ -116,13 +116,129 @@ form input {
 
 button {
   font-size: 1.1rem;
-  background-color: #d4af37;
+  background-color: #ddc370;
   padding: 0.5rem;
   border-radius: 25px;
   border-style: none;
   justify-self: flex-end;
   float: right;
   margin-top: 1rem;
+}
+
+body.index {
+  background-color: #f8f8f7;
+}
+body.index button {
+  color: white;
+  background-color: black;
+}
+body.index a {
+  background-color: black;
+  padding: 0.5rem;
+  border-radius: 20px;
+}
+body.index header {
+  margin-bottom: 1.5rem;
+}
+body.index header img {
+  fill: #2e2c29;
+}
+body.index main {
+  overflow: visible;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+body.index main img {
+  margin-top: 2rem;
+  width: 80%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+body.index main h1 {
+  color: #2e2c29;
+  font-size: 2rem;
+  font-weight: 700;
+}
+body.index main p {
+  color: #2e2c29;
+  font-weight: 300;
+}
+body.index main section {
+  margin-top: 5rem;
+  padding: 0;
+  background-color: transparent;
+}
+body.index main section h2 {
+  color: #2e2c29;
+}
+body.index main .bestuur {
+  position: relative;
+  width: 100%;
+}
+body.index main .bestuur svg {
+  position: absolute;
+  fill: #ddc370;
+  overflow: visible;
+}
+body.index main .bestuur #svg1 {
+  right: 0;
+  z-index: -1;
+  bottom: 1rem;
+  height: 55%;
+}
+body.index main .bestuur #svg2 {
+  left: -5rem;
+  z-index: -1;
+  top: 1rem;
+  height: 35%;
+}
+body.index main .bestuur #svg3 {
+  left: 1rem;
+  z-index: -1;
+  bottom: 2rem;
+  height: 15%;
+}
+body.index main .bestuur ul {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+body.index main .bestuur ul li {
+  margin: 1rem 0;
+}
+body.index main .login {
+  width: 100%;
+}
+body.index main .login label {
+  color: #2e2c29;
+  margin: 0.5rem 0;
+}
+body.index main .login input {
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-style: none;
+  border-radius: 20px;
+  padding: 0.5rem;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+main::before {
+  content: "";
+  width: 100%;
+  max-height: 250px;
+  height: 20%;
+  background-color: #6bb35f;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  border-radius: 20px;
 }
 
 /*# sourceMappingURL=main.css.map */

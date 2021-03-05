@@ -1,15 +1,53 @@
-extends layouts/head_1.pug
-
-block title
+doctype html
+head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title o.v. Het w.g. Tao
+    link(rel="stylesheet", href="../../../static/styles/main.css")
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet")
 
-block main
-    //- section 
-    //-     a(href="/login")
-    main 
-        form#login(method="POST", action="/login")
-            label E-mail 
-            input(type="email" name="email")
-            label Password 
-            input(type="password" name="password")
-        button(type="submit" value="submit" form="login") Inloggen 
+body.index 
+    header
+        img(src="../../static/assets/tao1.svg") 
+        if user
+            a(href="/logout") Uitloggen
+            a(href="/portal") Portal
+        else
+            a(href="#login") Inloggen 
+    main
+        img(src="../../static/assets/header.jpg") 
+        h1 o.v. Het wijsgerig gezelschap Tao
+        p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis iusto voluptas cum, nam ipsam doloribus eum esse sequi, necessitatibus nostrum repellendus minima voluptatem nesciunt. Aut nihil nostrum facere reprehenderit neque.
+        section.bestuur
+            h2 Het Bestuur
+            svg#svg1(viewBox="0 0 137 301" fill="none" xmlns="http://www.w3.org/2000/svg")
+                circle( cx="150.5" cy="150.5" r="150.5")
+            svg#svg2(viewBox="0 0 185 204" fill="none" xmlns="http://www.w3.org/2000/svg")
+                circle(cx="83" cy="102" r="102")
+            svg#svg3(viewBox="0 0 185 204" fill="none" xmlns="http://www.w3.org/2000/svg")
+                circle(cx="83" cy="102" r="102")
+            ul
+                li 
+                    p Curator Actorum
+                    p= curator[0].firstname+' ' + curator[0].particle +' '+curator[0].lastname
+                if propraetor.length > 0
+                    li
+                        p Pro-Praetor 
+                        p=propraetor[0].firstname+' ' + propraetor[0].particle + ' ' + propraetor[0].lastname
+                li
+                    p Praetor 
+                    p=praetor[0].firstname+' ' + praetor[0].particle + ' ' + praetor[0].lastname 
+                li
+                    p Quaestor 
+                    p=quaestor[0].firstname+' ' + quaestor[0].particle + ' ' + quaestor[0].lastname
+        section.login
+            h2  Leden login
+            form#login(method="POST", action="/login")
+                label E-mailadres 
+                input(type="email" name="email" required="true")
+                label Wachtwoord 
+                input(type="password" name="password" required="true")
+            button(type="submit" value="submit" form="login") Inloggen 
+
+        

@@ -47,7 +47,7 @@ app.use('/static', express.static('./public/static'))
 //Routes
 app
 	.use('*', saveLocal)		
-	.get('/', (req, res) => {res.render('index')})
+	.get('/', showIndex)
 	.get('/login', (req, res) => {res.render('login')})
 	.get('/logout', logout)
 	.post('/login', login)
@@ -105,4 +105,9 @@ async function saveBoard(req, res, next){
 		res.locals.bestuur = false
 		next()
 	}
+}
+
+async function showIndex (req, res){
+	let board = await boardUtil.findBoard();
+	res.render('index', board)
 }

@@ -5,10 +5,10 @@ exports.findBoard = function () {
 		try {
 			let data = Board.findOne()
 				.sort({_id: -1})
-				.populate('praetor', 'lastname' )
-				.populate('propraetor', 'lastname' )
-				.populate('curator', 'lastname' )
-				.populate('quaestor', 'lastname' )
+				.populate('praetor')
+				.populate('propraetor')
+				.populate('curator')
+				.populate('quaestor')
 				.limit(1);
 			resolve(data);
 		} catch (err) {
