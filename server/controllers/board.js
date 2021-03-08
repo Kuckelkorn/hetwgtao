@@ -26,13 +26,6 @@ async function showBoard (req, res ){
 	res.render('board')
 }
 
-// Finding members based on their status in the association either active or reunionist
-// async function getMembers (req, res){
-// 	let actief = await findMembers('Actief');
-// 	let reunisten = await findMembers('Reunist');
-// 	res.render('change_board', {actief, reunisten})
-// }
-
 
 // finding all active members
 function findActive () {
