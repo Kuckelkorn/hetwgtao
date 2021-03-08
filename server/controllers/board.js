@@ -14,11 +14,12 @@ router
 	.post('/add&chang_committee', changeCommittee)
 	.post('/add_board', changeBoard);
 
-
+// Rendering the board page not much to see here just yet. 
 async function showBoard (req, res ){
 	res.render('board')
 }
 
+// Finding members based on their status in the association either active or reunionist
 async function getMembers (req, res){
 	let actief = await findMembers('Actief');
 	let reunisten = await findMembers('Reunist');
@@ -26,7 +27,7 @@ async function getMembers (req, res){
 }
 
 
-
+// finding all members based on their status
 function findMembers (status) {
 	return new Promise((resolve, reject) => {
 		try {
@@ -38,8 +39,10 @@ function findMembers (status) {
 	})
 }
 
+// Changing the board to the new board
 async function changeBoard(req, res){
 	const board = new Board();
+	// Get the names from the body and split them in an array (Firstname and Lastname)
 	let praetorArr = req.body.praetor.split(" ");
 	let propraetorArr = req.body.propraetor.split(" ");
 	let curatorArr = req.body.curator.split(" ");
@@ -51,11 +54,13 @@ async function changeBoard(req, res){
 		abactis: await Member.find({firstname: curatorArr[0], lastname:curatorArr[1]}, '_id'),
 		fiscus: await Member.find({firstname: quaestorArr[0], lastname:quaestorArr[1]}, '_id')
 	}
+	// Update the committee collection with the new board
 	await Committee.findOneAndReplace({name: 'Bestuur'}, update, {
 		new: true,
 		upsert: true
 	})
 
+	// Adding the new board to the collection with all the previous boards
 	board.praetor = await Member.find({firstname: praetorArr[0], lastname:praetorArr[1]}, '_id');
 	board.propraetor = await Member.find({firstname: propraetorArr[0], lastname: propraetorArr[1]}, '_id');
 	board.curator = await Member.find({firstname: curatorArr[0], lastname:curatorArr[1]}, '_id');
@@ -71,6 +76,8 @@ async function changeBoard(req, res){
 	return;
 }
 
+// Adding new members to the site
+// No registration form because it is a closed membership
 async function addMember (req, res) {
 	const member = new Member();
 	const salt = await bcrypt.genSaltSync();
@@ -95,6 +102,7 @@ async function addMember (req, res) {
 	return;
 }
 
+// Adding a new committee or changing an existing one
 async function changeCommittee (req, res){
 	let pArr = req.body.praetor.split(" ");
 	let vpArr = req.body.propraetor.split(" ");
@@ -109,7 +117,7 @@ async function changeCommittee (req, res){
 	}
 	await Committee.findOneAndReplace({name: req.body.name}, update, {
 		new: true,
-		upsert: true
+		upsert: true // This makes sure that if their is no committee found with this name it adds it to the collection
 	})
 	res.redirect('/commissies')
 }
@@ -118,6 +126,7 @@ function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+// Check if the user is part of the board otherwise you can't acces the pages to add members or change the board
 function isBoard (req, res, next){
 	if (res.locals.bestuur === true){
 		return next();

@@ -1,5 +1,6 @@
 const Board = require("../models/board");
 
+// Function to find the latest board
 exports.findBoard = function () {
 	return new Promise((resolve, reject) => {
 		try {

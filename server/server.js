@@ -1,3 +1,7 @@
+// Server app setup & routes with stored sessions for role allocation and user recognition
+
+
+// All required modules & variables
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
@@ -65,6 +69,7 @@ app.listen(port, () => {
 	console.log('Server started at port ' + port);
 });
 
+// Logging in the user if the user is logged in redirect to different page otherwise redirect to login page
 function login (req, res, next) {
 	passport.authenticate('local', {
 		successRedirect: '/mededelingen',
@@ -72,17 +77,20 @@ function login (req, res, next) {
 	})(req, res, next);
 }
 
+// Logging the user out and destroying the session
 function logout(req, res ){
 	req.logout();
 	req.session.destroy(); 
 	res.redirect('/');
 }
 
+// Setup session to use res.locals for the user
 function saveLocal (req, res, next){
 	res.locals.user = req.user || null;
 	next();
 }
 
+// Check if user is logged in 
 function loggedIn (req, res, next){
 	if (req.isAuthenticated()){
 		return next();
@@ -91,6 +99,7 @@ function loggedIn (req, res, next){
 	}
 }
 
+// Check if the user is part of the Board of the association if not some actions are unavailable
 async function saveBoard(req, res, next){
 	let latestBoard = await boardUtil.findBoard();
 	if (res.locals.user.id === latestBoard.praetor[0].id || 
@@ -107,6 +116,7 @@ async function saveBoard(req, res, next){
 	}
 }
 
+// Rendering the index page with the members of the board
 async function showIndex (req, res){
 	let board = await boardUtil.findBoard();
 	res.render('index', board)
