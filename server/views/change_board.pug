@@ -12,8 +12,8 @@ block main
             label Praetor
             input(type="text", name="praetor", placeholder="Zoeken.." list="leden")
             datalist#leden 
-                each member, i in actief 
-                    option(value= member.firstname +' ' + member.particle+ ' ' + member.lastname)
+                each member, i in members
+                    option(value= member.firstname+' '+member.particle+' '+member.lastname)
             label pro-Praetor
             input(type="text", name="propraetor", placeholder="Zoeken.." list="leden")
             label Curator Actorum
@@ -21,13 +21,3 @@ block main
             label Quaestor
             input(type="text", name="quaestor", placeholder="Zoeken.." list="leden")
         button(type="submit" form="board" value="Submit") Bestuur wijzigen
-        form#rBoard(method="POST" action="/bestuur/change_RBoard")
-            label Reunistenbestuur
-            input(type="text", placeholder="Zoeken.." list="reunisten" name="r1")
-            datalist#reunisten 
-                each member, i in reunisten  
-                    option(value= member.firstname +' ' + member.particle+ ' ' + member.lastname)
-            input(type="text", placeholder="Zoeken.." list="reunisten" name="r2")
-            input(type="text", placeholder="Zoeken.." list="reunisten" name="r3")
-            input(type="text", placeholder="Zoeken.." list="reunisten" name="r4")
-        button(type="submit" form="rBoard" value="Submit") Reunistenbestuur wijzigen

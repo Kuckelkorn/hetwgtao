@@ -87,7 +87,7 @@ async function changeNumber (req, res) {
 	return;
 }
 
-// Function to change a study of the user
+// Function to change the study of the user
 async function changeStudy (req, res) {
 	let member = await findProfile (req.params.firstname, req.params.lastname);
 	let data = {}

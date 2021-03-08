@@ -13,8 +13,8 @@ const mentions = require('./controllers/mentions.js');
 const board = require('./controllers/board.js');
 const committees = require('./controllers/committees.js')
 const passport = require('passport');
-require('./Utilities/passportUtil.js')(passport);
-const boardUtil = require('./Utilities/boardUtil.js');
+require('./modules/passportModule.js')(passport);
+const boardModule = require('./modules/boardModule.js');
 let port = process.env.PORT || 5555
 
 
@@ -59,7 +59,7 @@ app
 	.use('/lid', loggedIn, saveBoard, profile)
 	.use('/mededelingen', loggedIn, saveBoard, mentions)
 	.use('/bestuur', loggedIn, saveBoard, board)
-	.use('/commissies', committees)
+	.use('/commissies', loggedIn, saveBoard, committees)
 	.get('/varia', (req, res) => {res.render('indev')})
 	.get('/kalender', (req, res) => {res.render('indev')})
 	.use((req, res) => { res.status(404).render('404')});
@@ -101,7 +101,7 @@ function loggedIn (req, res, next){
 
 // Check if the user is part of the Board of the association if not some actions are unavailable
 async function saveBoard(req, res, next){
-	let latestBoard = await boardUtil.findBoard();
+	let latestBoard = await boardModule.findBoard();
 	if (res.locals.user.id === latestBoard.praetor[0].id || 
 		res.locals.user.id === latestBoard.curator[0].id ||
 		res.locals.user.id === latestBoard.quaestor[0].id) {
@@ -118,6 +118,7 @@ async function saveBoard(req, res, next){
 
 // Rendering the index page with the members of the board
 async function showIndex (req, res){
-	let board = await boardUtil.findBoard();
+	let board = await boardModule.findBoard();
+	console.log(board)
 	res.render('index', board)
 }
