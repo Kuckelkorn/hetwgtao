@@ -1,8 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const Committee = require('../models/committee.js');
+const committeeModule = require('../modules/committeeModule.js');
+
 
 router
-	.get('/', (req, res) => { res.render('indev')});
+  .get('/', showCommittees);
+
+
+async function showCommittees (req, res) {
+  let committees = await committeeModule.findCommittees();
+  res.render('committees', committees)
+}
 
 module.exports = router

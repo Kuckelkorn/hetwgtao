@@ -228,7 +228,7 @@ body.index main .login input {
   margin: 0.5rem 0;
 }
 
-main::before {
+body.index main::before {
   content: "";
   width: 100%;
   max-height: 250px;

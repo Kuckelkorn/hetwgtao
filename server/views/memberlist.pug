@@ -9,10 +9,11 @@ block main
     main 
         h1 Ledenlijst
         if bestuur === true 
-            p
-                a(href="/bestuur/leden/toevoegen") + leden toevoegen
-            p
-                a(href="/bestuur/leden/wijzigen") leden wijzigen
+            ul
+                li
+                    a(href="/bestuur/leden/toevoegen") + leden toevoegen
+                li
+                    a(href="/bestuur/leden/wijzigen") leden wijzigen
         ul
             each member, i in members
                     li.card.lid

@@ -1,0 +1,21 @@
+extends layouts/head.pug
+
+block title
+    title Commissies
+block profile
+    a(href="/lid/"+user.lastname.toLowerCase()+'&'+user.firstname.toLowerCase()) Mijn Profiel
+    
+block main
+    main 
+        h1 Commissies
+        if bestuur === true 
+            ul
+                li
+                    a(href="/bestuur/commissie/toevoegen|wijzigen") Commissie toevoegen
+        //- ul
+        //-     each member, i in members
+        //-             li.card.lid
+        //-                 a(href="/lid/"+member.lastname.toLowerCase()+'&'+member.firstname.toLowerCase())
+        //-                     h2.naam= member.firstname +' ' + member.particle+ ' ' + member.lastname
+        //-                     p.status= member.status
+        //-                     p.jaar= member.year
