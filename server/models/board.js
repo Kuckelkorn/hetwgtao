@@ -1,23 +1,23 @@
 const mongoose = require('mongoose');
 
 const boardSchema = mongoose.Schema({
-	praetor:[{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Member',
-		required: true
-	}],
-	propraetor:[{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Member'
-	}],
-	curator:[{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Member'
-	}],
-	quaestor:[{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Member'
-	}]
+  praetor:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Member',
+    required: true
+  }],
+  propraetor:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Member'
+  }],
+  curator:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Member'
+  }],
+  quaestor:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Member'
+  }]
 })
 
 

@@ -4,12 +4,12 @@ const committeeModule = require('../modules/committeeModule.js');
 
 
 router
-	.get('/', showCommittees);
+  .get('/', showCommittees);
 
 
 async function showCommittees (req, res) {
-	let committees = await committeeModule.findCommittees();
-	res.render('committees', committees)
+  let committees = await committeeModule.findCommittees();
+  res.render('committees', committees)
 }
 
 module.exports = router
