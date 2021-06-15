@@ -1,0 +1,17 @@
+extends layouts/head.pug
+
+block title
+    title Varia 
+block profile
+    a(href="/lid/"+user.lastname.toLowerCase()+'&'+user.firstname.toLowerCase()) Mijn Profiel
+
+block main  
+    main 
+        h1 Varia 
+        a(href='/varia/toevoegen') Varia opgeven 
+        ul 
+            each varia, i in varias
+                li.card.lid 
+                    h2.naam= varia.name[0].firstname+' ' + varia.name[0].particle + ' ' + varia.name[0].lastname
+                    p.datum= varia.date 
+                    p.varia= varia.varia

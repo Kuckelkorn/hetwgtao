@@ -11,7 +11,8 @@ const members = require('./controllers/members.js');
 const profile = require('./controllers/profile.js');
 const mentions = require('./controllers/mentions.js');
 const board = require('./controllers/board.js');
-const committees = require('./controllers/committees.js')
+const committees = require('./controllers/committees.js');
+const varia = require('./controllers/varia.js');
 const passport = require('passport');
 require('./modules/passportModule.js')(passport);
 const boardModule = require('./modules/boardModule.js');
@@ -58,9 +59,10 @@ app
   .use('/leden', loggedIn, saveBoard, members)
   .use('/lid', loggedIn, saveBoard, profile)
   .use('/mededelingen', loggedIn, saveBoard, mentions)
+  .use('/varia', loggedIn, saveBoard, varia)
   .use('/bestuur', loggedIn, saveBoard, board)
   .use('/commissies', loggedIn, saveBoard, committees)
-  .get('/varia', (req, res) => {res.render('indev')})
+  .get('/varia', (req, res) => {res.render('varia')})
   .get('/kalender', (req, res) => {res.render('indev')})
   .use((req, res) => { res.status(404).render('404')});
 	
@@ -119,6 +121,5 @@ async function saveBoard(req, res, next){
 // Rendering the index page with the members of the board
 async function showIndex (req, res){
   let board = await boardModule.findBoard();
-  console.log(board)
   res.render('index', board)
 }

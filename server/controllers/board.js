@@ -1,9 +1,12 @@
 const express = require('express');
+// const date = require('date-fns');
 const router = express.Router();
 const Board = require('../models/board.js');
 const Member = require('../models/member.js');
 const bcrypt = require('bcryptjs');
 const Committee = require('../models/committee.js');
+const boardModule = require('../modules/boardModule.js');
+
 
 
 router
@@ -23,7 +26,8 @@ router
 
 // Rendering the board page not much to see here just yet. 
 async function showBoard (req, res ){
-  res.render('board')
+  let board = await boardModule.findBoard();
+  res.render('board', board)
 }
 
 
@@ -47,7 +51,6 @@ async function changeBoard(req, res){
   let propraetorArr = req.body.propraetor.split(" ");
   let curatorArr = req.body.curator.split(" ");
   let quaestorArr = req.body.quaestor.split(" ");
-  console.log(req.body.praetor, req.body.curator)
   let update = {
     name: 'Bestuur',
     praeses : await Member.find({firstname: praetorArr[0], lastname:praetorArr[praetorArr.length -1]}, '_id'),
@@ -83,6 +86,8 @@ async function addMember (req, res) {
   const member = new Member();
   const salt = await bcrypt.genSaltSync();
   const password = await bcrypt.hash(req.body.password, salt);
+
+  console.log(req.body.birthday)
   member.firstname= capitalizeFirstLetter(req.body.firstname);
   member.particle=req.body.particle;
   member.lastname= capitalizeFirstLetter(req.body.lastname);
@@ -110,6 +115,30 @@ async function changeCommittee (req, res){
   let abArr = req.body.abactis.split(" ");
   let fArr = req.body.fiscus.split(" ");
   let nArr = req.body.nestor.split(" ");
+
+  const leden = []
+  const lidNames =[]
+  
+  let y = Array.isArray(req.body.lid)
+  
+  if (y === false){
+    let name =req.body.lid.split(" ");
+    leden.push(name)
+  } else {
+    for( let i = 0; i < req.body.lid.length; i++ ){
+      let name =req.body.lid[i].split(" ");
+      leden.push(name)
+    }
+  }
+
+  console.log(leden)
+
+  for (let i = 0; i < leden.length; i++) {
+    let lid = leden[i]
+    let lidName = await Member.find({firstname: lid[0], lastname: lid[lid.length-1]}, '_id')
+    lidNames.push(lidName[0])
+  }
+  
 	
   let update = {
     name: req.body.name,
@@ -118,18 +147,13 @@ async function changeCommittee (req, res){
     abactis: await Member.find({firstname: abArr[0], lastname:abArr[abArr.length -1]}, '_id'),
     fiscus: await Member.find({firstname: fArr[0], lastname:fArr[fArr.length -1]}, '_id'),
     nestor: await Member.find({firstname: nArr[0], lastname:nArr[nArr.length-1]}, '_id'),
+    leden: lidNames
   }
 
   await Committee.findOneAndReplace({name: req.body.name}, update, {
     new: true,
     upsert: true // This makes sure that if their is no committee found with this name it adds it to the collection
   })
-
-  // for( let i = 0; i < req.body.lid.length; i++ ){
-  // 	let names =req.body.lid[i].split(" ");
-  // 	let member = await Member.find({firstname: names[0], lastname: names[names.length -1]}, '_id');
-  // }
-  console.log(await Committee.findOne({name: req.body.name}))
   res.redirect('/commissies')
 }
 

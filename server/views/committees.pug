@@ -12,10 +12,25 @@ block main
             ul
                 li
                     a(href="/bestuur/commissie/toevoegen|wijzigen") Commissie toevoegen
-        //- ul
-        //-     each member, i in members
-        //-             li.card.lid
-        //-                 a(href="/lid/"+member.lastname.toLowerCase()+'&'+member.firstname.toLowerCase())
-        //-                     h2.naam= member.firstname +' ' + member.particle+ ' ' + member.lastname
-        //-                     p.status= member.status
-        //-                     p.jaar= member.year
+        ul
+            each committee, i in committees
+                    li.card.lid
+                        h2.naam= committee.name
+                        p Praeses
+                        p=committee.praeses[0].firstname+' ' + committee.praeses[0].particle + ' ' + committee.praeses[0].lastname
+                        if committee.vp.length > 0
+                            p Vice-Praeses
+                            p=committee.vp[0].firstname+' ' + committee.vp[0].particle + ' ' + committee.vp[0].lastname
+                        if committee.fiscus.length > 0
+                            p Fiscus
+                            p=committee.fiscus[0].firstname+' ' + committee.fiscus[0].particle + ' ' + committee.fiscus[0].lastname
+                        if committee.abactis.length > 0
+                            p Ab-Actis
+                            p=committee.abactis[0].firstname+' ' + committee.abactis[0].particle + ' ' + committee.abactis[0].lastname
+                        if committee.nestor.length > 0
+                            p Nestor
+                            p=committee.nestor[0].firstname+' ' + committee.nestor[0].particle + ' ' + committee.nestor[0].lastname
+                        if committee.leden.length > 0
+                            each name, i in committee.leden
+                                    p Lid 
+                                    p= name.firstname+ ' ' + name.particle + ' ' + name.lastname

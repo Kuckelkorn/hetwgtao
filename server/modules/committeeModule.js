@@ -1,5 +1,6 @@
 const Committee = require("../models/committee");
 
+// Function to find the latest board
 exports.findCommittees = function () {
   return new Promise((resolve, reject) => {
     try {
@@ -7,8 +8,9 @@ exports.findCommittees = function () {
         .populate('praeses')
         .populate('vp')
         .populate('fiscus')
+        .populate('abactis')
         .populate('nestor')
-        .populate('lid')
+        .populate('leden')
       resolve(data);
     } catch (err) {
       reject(console.log(err))

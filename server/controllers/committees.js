@@ -9,7 +9,7 @@ router
 
 async function showCommittees (req, res) {
   let committees = await committeeModule.findCommittees();
-  res.render('committees', committees)
+  res.render('committees', {committees})
 }
 
 module.exports = router

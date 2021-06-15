@@ -34,11 +34,11 @@ const memberSchema = mongoose.Schema({
     required: true
   },
   birthday:{
-    type: Date,
+    type: String,
     required: true
   },
   deathday:{
-    type: Date
+    type: String
   },
   street:{
     type: String

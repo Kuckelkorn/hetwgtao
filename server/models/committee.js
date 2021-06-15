@@ -26,11 +26,8 @@ const committeeSchema = mongoose.Schema({
     ref: 'Member'
   }],
   leden: [{
-    lid :[{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Member'
-    }]
-  }]
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Member'}]
 })
 
 
