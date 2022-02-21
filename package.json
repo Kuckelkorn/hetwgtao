@@ -4,8 +4,10 @@
   "description": "Community site packages",
   "main": "server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "ndmStart": "nodemon server/server.js"
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "package": "svelte-kit package",
+    "preview": "svelte-kit preview"
   },
   "repository": {
     "type": "git",
@@ -16,20 +18,16 @@
   "bugs": {
     "url": "https://github.com/Kuckelkorn/hetwgtao/issues"
   },
-  "homepage": "https://github.com/Kuckelkorn/hetwgtao#readme",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "date-fns": "^2.22.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "mongoose": "^5.11.14",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "pug": "^3.0.0"
-  },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "@iconify/svelte": "^2.1.2",
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "next",
+    "svelte": "^3.44.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "date-fns": "^2.27.0",
+    "dotenv": "^10.0.0",
+    "mongoose": "^6.1.3"
   }
 }

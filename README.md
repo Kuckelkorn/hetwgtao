@@ -1,94 +1,38 @@
-# Het w.g. Tao
+# create-svelte
 
-## Summary
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
 
-### What is it?
+## Creating a project
 
-hetwgtao is a community site made for a studentassociation in Amsterdam affiliated with the larger association L.A.N.X.
-This site has the ability to provide their members with the information provided by their board.
+If you're seeing this, you've probably already done this step. Congrats!
 
-Like for example:
+```bash
+# create a new project in the current directory
+npm init svelte@next
 
-- Having a complete overview of all the present and past members and their profile
-
-- Seeing an update of your balance (in development)
-
-- Look at the the persons responsible for a committee (in development)
-
-- Look at all the fun varia a person said (in development)
-
-- Look at all the upcoming activitities (in developement)
-
-- Have a dynamic homepage that displays the current board of the association
-
-Most of these options are only available to the board in order to prevent mis-use of the application.
-Because the association has a closed membership it is not possible to register for obvious reasons.
-
-### The looks
-
-Below there are some concepts I made in Figma.
-
-#### Homepage
-
-![On desktop](markdown/images/home-desktop.png) ![On mobile](markdown/images/home-mobiel.png)
-
-#### Memberslist
-
-![On desktop](markdown/images/ledenlijst-desktop.png) ![On mobile](markdown/images/ledenlijst-mobiel.png)
-
-#### Announcements
-
-![On desktop](markdown/images/mededelingen-desktop.png) ![On mobile](markdown/images/mededelingen-mobiel.png)
-
-Ofcourse the app doesnt't fully look like this just yet. But these images are just to give an impression of the final look. (sort of)
-
-## Running the app
-
-### Installation
-
-#### 1. Clone the repository
-
-The repository can be cloned by running `git clone` in the command line.
-
-```zsh
-git clone https://github.com/Kuckelkorn/hetwgtao
+# create a new project in my-app
+npm init svelte@next my-app
 ```
 
-#### 2. Install the packages
+> Note: the `@next` is temporary
 
-Install the dependencies with npm.
+## Developing
 
-```node
-npm install
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-#### 3. Setting up your .env file
+## Building
 
-##### 1. Setup your database connection
+Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
 
-In order to setup your database connection first you need to make a `.env` file
-in that file you paste the following code if you're using mongodb paste
-your info instead of the standard `<username>` , `<password>`, `<dbname>` it looks like this.
-
-```sh
-MONGODB_URI= mongodb+srv://<username>:<password>@cluster0-ea6cu.azure.mongodb.net/<dbname>?retryWrites=true
+```bash
+npm run build
 ```
 
-If you're using a different service or provider look at their documentation about setting up the connection to your database and paste it behind `MONGO_DB=`
-
-##### 2. Setup express sessions
-
-In order to make sessions work you have to put in the .env file a string consisting of random characters to make it really hard for hackers to guess your secret and accesing your cookies and retrieve potentially sensitive information about your users
-
-```sh
-SESSION_SECRET= 'your string'
-```
-
-### Running and viewing the application
-
-Start the server with `npm run ndmStart`, you can view it by going to `localhost:5555` or a different specified port in your .env file
-
-```node
-1. npm run ndmStart
-2. open your browser of choice and go to localhost:5555
-```
+> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.

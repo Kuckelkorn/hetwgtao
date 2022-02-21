@@ -1,8 +1,8 @@
 .DS_Store
-.DS_Store?
-/node_modules/
-/data/
+node_modules
+/build
+/.svelte-kit
+/package
 .env
-notes.txt
-/server/controllers/tests.js
-/server/views/test.pug
+.env.*
+!.env.example
